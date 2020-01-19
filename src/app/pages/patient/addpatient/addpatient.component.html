@@ -1,0 +1,472 @@
+<div class="header pb-8 d-flex align-items-center"
+  style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-grad-final opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12 col-md-10">
+        <h1 class="display-2 text-white">Add Patients</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" style="margin-top: -15rem;">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Patient</h3>
+            </div>
+            <div class="col-4 text-right">
+              <a href="#!" class="btn btn btn-primary">Save</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Details</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_doctorName">Patient Name</label>
+                    <input type="text" id="txt_patientName" class="form-control form-control-alternative"
+                      placeholder="Enter Patient Name">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_dob">Date of birth</label>
+                    <div class="input-group input-group-alternative">
+
+                      <input class="form-control form-control-alternative" id="txt_dob" (click)="d.toggle()"
+                        placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append" (click)="d.toggle()">
+                        <button class="btn btn-outline-secondary ni ni-calendar-grid-58" type="button"></button>
+                        <!-- <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_age">Age</label>
+                    <input type="text" id="txt_age" class="form-control form-control-alternative" placeholder="Age"
+                      disabled>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_Mobile">Mobile</label>
+                    <input type="number" min="0" minlength="10" maxlength="10" id="txt_Mobile"
+                      class="form-control form-control-alternative" placeholder="Mobile">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_pettype">Pet Type</label>
+                    <input type="text" id="txt_pettype" class="form-control form-control-alternative"
+                      placeholder="Pet Type">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_breed">Breed</label>
+                    <input type="text" id="txt_breed" class="form-control form-control-alternative" placeholder="Breed">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_symptoms">Symptoms</label>
+                    <input type="text" id="txt_symptoms" class="form-control form-control-alternative"
+                      placeholder="Symptoms">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_deasease_name">Deasease Name</label>
+                    <select type="text" id="txt_deasease_name" class="form-control form-control-alternative"
+                      placeholder="Deasease Name" required ngbTooltip="Select Deasease">
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>D</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_DiseaseStage">Deasease Stage</label>
+                    <select id="txt_DiseaseStage" class="form-control form-control-alternative"
+                      placeholder="Please select Stage" name="txt_DiseaseStage" required ngbTooltip="Select Stage">
+                      <option>AE</option>
+                      <option>BE</option>
+                      <option>CE</option>
+                      <option>DE</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_LFDesease">Lenghth of desease</label>
+                    <input type="text" id="txt_LFDesease" class="form-control form-control-alternative"
+                      placeholder="Lenghth of desease">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+
+                    <label class="form-control-label" for="txt_Consultationcontact">Follow-up Need</label>
+                    <div class="btn-group mt-1">
+                      <label class="btn btn-md btn-primary">
+                        <input type="radio" name="optradio" checked>Yes
+                      </label>
+                      <label class="btn btn-md btn-primary">
+                        <input type="radio" name="optradio">No
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="txt_VDate">Vaccination Date</label>
+                    <div class="input-group input-group-alternative">
+
+                      <input class="form-control form-control-alternative" id="txt_VDate" (click)="d.toggle()"
+                        placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append" (click)="d.toggle()">
+                        <button class="btn btn-outline-secondary ni ni-calendar-grid-58" type="button"></button>
+                        <!-- <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Add Prescription</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="card shadow">
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Medicine Name</th>
+                          <th scope="col">How many times in a day</th>
+                          <th scope="col">how many days</th>
+                          <th scope="col">Special instruction</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+                          <td>
+                            <select id="txt_Disease" class="form-control" placeholder="Please select Diseases" name="txt_Disease" required>
+                              <option>A</option>  
+                              <option>B</option>  
+                              <option>C</option>  
+                              <option>D</option>  
+                            </select>
+                          </td>
+                          <td>
+                            <input type="text" id="txt_HMTimes" class="form-control form-control-alternative"
+                            placeholder="How many Times">
+                          </td>
+                          <td>
+                            <input type="text" id="txt_NODays" class="form-control form-control-alternative"
+                            placeholder="Number Of Days">
+                          </td>
+                          <td>
+                            <input type="text" id="txt_SPInstruction" class="form-control form-control-alternative"
+                            placeholder="Special Instruction">
+                          </td>
+                          <td class="text-center">
+                            <div placement="bottom-center">
+                              <!-- <a class="btn btn-sm btn-icon-only text-light" >
+                                <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+                                
+                              </a> -->
+                              <a class="btn btn-sm btn-icon-only text-light" (click)="deleteRow(i)">
+                               
+                                <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                              </a>
+                            </div> 
+                          </td>
+                        </tr>
+                        <!-- <tr>
+                          <td>
+                            $1,800 USD
+                          </td>
+                          <td>
+                            <span class="badge badge-dot">
+                              <i class="bg-success"></i> completed
+                            </span>
+                          </td>
+                          <td>
+                            <div class="avatar-group">
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Ryan Tompson">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Romina Hadid">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Alexander Smith">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Jessica Doe">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="mr-2">100%</span>
+                              <div>
+                                <div class="progress">
+                                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="text-right">
+                            <div placement="bottom-right">
+                              <a class="btn btn-sm btn-icon-only text-light">
+                                <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+                                
+                              </a>
+                              <a class="btn btn-sm btn-icon-only text-light">
+                               
+                                <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                              </a>
+                            </div> 
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            $3,150 USD
+                          </td>
+                          <td>
+                            <span class="badge badge-dot mr-4">
+                              <i class="bg-danger"></i> delayed
+                            </span>
+                          </td>
+                          <td>
+                            <div class="avatar-group">
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Ryan Tompson">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Romina Hadid">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Alexander Smith">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Jessica Doe">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="mr-2">72%</span>
+                              <div>
+                                <div class="progress">
+                                  <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="text-right">
+                            <div placement="bottom-right">
+                              <a class="btn btn-sm btn-icon-only text-light">
+                                <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+                                
+                              </a>
+                              <a class="btn btn-sm btn-icon-only text-light">
+                               
+                                <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                              </a>
+                            </div> 
+                          </td>
+                        </tr>
+                        <tr>
+                         
+                          <td>
+                            $4,400 USD
+                          </td>
+                          <td>
+                            <span class="badge badge-dot">
+                              <i class="bg-info"></i> on schedule
+                            </span>
+                          </td>
+                          <td>
+                            <div class="avatar-group">
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Ryan Tompson">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Romina Hadid">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Alexander Smith">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Jessica Doe">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="mr-2">90%</span>
+                              <div>
+                                <div class="progress">
+                                  <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="text-right">
+                            <div placement="bottom-right">
+                              <a class="btn btn-sm btn-icon-only text-light">
+                                <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+                                
+                              </a>
+                              <a class="btn btn-sm btn-icon-only text-light">
+                               
+                                <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                              </a>
+                            </div> 
+                          </td>
+                        </tr>
+                        <tr>
+                         
+                          <td>
+                            $2,200 USD
+                          </td>
+                          <td>
+                            <span class="badge badge-dot mr-4">
+                              <i class="bg-success"></i> completed
+                            </span>
+                          </td>
+                          <td>
+                            <div class="avatar-group">
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Ryan Tompson">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Romina Hadid">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Alexander Smith">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                              <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
+                                data-original-title="Jessica Doe">
+                                <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg"
+                                  class="rounded-circle">
+                              </a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="mr-2">100%</span>
+                              <div>
+                                <div class="progress">
+                                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="text-right">
+                            <div placement="bottom-right">
+                              <a class="btn btn-sm btn-icon-only text-light">
+                                <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+                                
+                              </a>
+                              <a class="btn btn-sm btn-icon-only text-light">
+                               
+                                <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                              </a>
+                            </div> 
+                          </td>
+                        </tr> -->
+                        <tr>
+                          <td colspan="5">
+                            <nav aria-label="...">
+                              <a class="btn btn-sm text-primary float-right" (click)="addRow(i)"> <i class="ni ni-fat-add"></i> Add More</a>
+                            </nav>
+                          </td>
+                          
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- <div class="card-footer py-4">
+                    <nav aria-label="...">
+                      <a class="btn btn-sm text-primary float-right" (click)="addRow(i)"> <i class="ni ni-fat-add"></i> Add More</a>
+                    </nav>
+                  </div> -->
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">About me</h6>
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label>About Me</label>
+                <textarea rows="4" class="form-control form-control-alternative"
+                  placeholder="A few words about you ..."></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

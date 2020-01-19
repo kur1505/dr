@@ -1,0 +1,192 @@
+<div class="header bg-grad-final pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-9 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto pt-2">
+                  <span class="h2 font-weight-bold mb-0">Search :</span>
+                </div>
+                <div class="col">
+                  <input id="txt_Name" class="form-control" placeholder="Please Enter Patient ID/Mobile/Name"
+                    name="txt_Search" required>
+                </div>
+                <div class="col-auto">
+                  <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Search"
+                    required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0 d-inline">Patient table</h3>
+          <a class="text-white float-right" [routerLink]="['/addpatient']"> <i class="ni ni-fat-add"></i> Add Patient</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Patient Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Date</th>
+                <th scope="col" class="text-right pr-5">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span>DR0001</span>
+                </td>
+                <td>
+                  <span>abc</span>
+                </td>
+                <td>
+                  <span>8290948702</span>
+                </td>
+                <td>
+                  <span>1 JAN 2019</span>
+                </td>
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>DR0002</span>
+                </td>
+                <td>
+                  <span>abc</span>
+                </td>
+                <td>
+                  <span>8290948702</span>
+                </td>
+                <td>
+                  <span>1 JAN 2019</span>
+                </td>
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>DR0003</span>
+                </td>
+                <td>
+                  <span>abc</span>
+                </td>
+                <td>
+                  <span>8290948702</span>
+                </td>
+                <td>
+                  <span>1 JAN 2019</span>
+                </td>
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>DR0004</span>
+                </td>
+                <td>
+                  <span>abc</span>
+                </td>
+                <td>
+                  <span>8290948702</span>
+                </td>
+                <td>
+                  <span>1 JAN 2019</span>
+                </td>
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>DR0005</span>
+                </td>
+                <td>
+                  <span>abc</span>
+                </td>
+                <td>
+                  <span>8290948702</span>
+                </td>
+                <td>
+                  <span>1 JAN 2019</span>
+                </td>
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
