@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
           <div class="row icon-examples">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel === 1000'>
               <button type="button" placement="top-center"  ngbTooltip="Specialization"  class="btn-icon-clipboard" [routerLink]="['/specialization']">
                 <div>
                   <i class="ni ni-align-left-2"></i>
@@ -20,7 +20,7 @@
                 </div>
               </button>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel === 1000'>
               <a  placement="top-center" ngbTooltip="Doctor Details"  class="btn-icon-clipboard" [routerLink]="['/users']">
                 <div>
                   <i class="ni ni-active-40"></i>
@@ -28,7 +28,7 @@
                 </div>
               </a>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel !== 3000'>
               <button type="button" placement="top-center"  ngbTooltip="Diseases"  class="btn-icon-clipboard" [routerLink]="['/diseases']">
                 <div>
                   <i class="ni ni-air-baloon"></i>
@@ -36,7 +36,7 @@
                 </div>
               </button>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel !== 3000'>
               <button type="button" placement="top-center"  ngbTooltip="Diseases Stage"  class="btn-icon-clipboard" [routerLink]="['/diseases-stage']">
                 <div>
                   <i class="ni ni-album-2"></i>
@@ -44,7 +44,7 @@
                 </div>
               </button>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel !== 3000'>
               <button type="button" placement="top-center"  ngbTooltip="Medicine"  class="btn-icon-clipboard" [routerLink]="['/medicine']">
                 <div>
                   <i class="ni ni-align-center"></i>

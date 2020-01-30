@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IconsComponent implements OnInit {
 
-  public copy: string;
+  public user: string;
   constructor() { }
 
   ngOnInit() {
+    this.user=JSON.parse(localStorage.getItem("UData"));
   }
 }

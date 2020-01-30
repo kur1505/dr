@@ -12,18 +12,18 @@ import { DiseasesStageComponent } from '../../pages/masters/diseases-stage/disea
 import { MedicineComponent } from '../../pages/masters/medicine/medicine.component';
 import { PatientComponent } from '../../pages/patient/patient.component';
 import { AddPatientComponent } from '../../pages/patient/addpatient/addpatient.component';
-
+import{AuthGuard} from '../../components/api/auth.guard';
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'user-profile', component: UserProfileComponent },
-    { path: 'tables', component: TablesComponent },
-    { path: 'masters', component: IconsComponent },
-    { path: 'maps', component: MapsComponent },
-    { path: 'users', component: UsersComponent },
-    { path: 'specialization', component: SpecializationComponent },
-    { path: 'diseases', component: DiseasesComponent },
-    { path: 'diseases-stage', component: DiseasesStageComponent },
-    { path: 'medicine', component: MedicineComponent },
-    { path: 'patient', component: PatientComponent },
-    {path:'addpatient',component:AddPatientComponent}
+    { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
+    { path: 'user-profile', component: UserProfileComponent,canActivate:[AuthGuard] },
+    { path: 'tables', component: TablesComponent,canActivate:[AuthGuard] },
+    { path: 'masters', component: IconsComponent,canActivate:[AuthGuard] },
+    { path: 'maps', component: MapsComponent,canActivate:[AuthGuard] },
+    { path: 'users', component: UsersComponent,canActivate:[AuthGuard] },
+    { path: 'specialization', component: SpecializationComponent,canActivate:[AuthGuard] },
+    { path: 'diseases', component: DiseasesComponent,canActivate:[AuthGuard] },
+    { path: 'diseases-stage', component: DiseasesStageComponent,canActivate:[AuthGuard] },
+    { path: 'medicine', component: MedicineComponent,canActivate:[AuthGuard] },
+    { path: 'patient', component: PatientComponent,canActivate:[AuthGuard] },
+    {path:'addpatient',component:AddPatientComponent,canActivate:[AuthGuard]}
 ];

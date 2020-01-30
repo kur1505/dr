@@ -6,23 +6,26 @@
         <div class="col-xl-9 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
-              <div class="row">
-                <div class="col-auto pt-2">
-                  <span class="h2 font-weight-bold mb-0">Diseases Name :</span>
+              <form role="form" #f="ngForm"  (ngSubmit)="adddiseases(f.value)">
+                <div class="row">
+                  <div class="col-auto pt-2">
+                    <span class="h2 font-weight-bold mb-0">Diseases Name :</span>
+                  </div>
+                  <div class="col">
+                    <input id="txt_Name" class="form-control" placeholder="Please Enter Diseases Name"
+                      [(ngModel)]="value" value="{{data}}" name="txt_Name" required>
+                  </div>
+                  <div class="col-auto pt-2">
+                    <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Save">
+                    <input id="txt_Update" class="btn btn-outline btn-info d-none" type="button" name="txt_Update" value="Update" (click)="update(f.value,id)">
+                  </div>
                 </div>
-                <div class="col">
-                  <input id="txt_Name" class="form-control" placeholder="Please Enter Diseases Name" name="txt_Name" required>
-                </div>
-                <div class="col-auto pt-2">
-                  <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Save" required>
-                </div>
-              </div>
-             
+              </form>
             </div>
           </div>
         </div>
-  
-  
+
+
       </div>
     </div>
   </div>
@@ -48,157 +51,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let arr of diseasesArray; let i = index">
                 <th scope="row">
                   <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                       <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                     </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Argon Design System</span>
+                      <span class="mb-0 text-sm">{{arr.diseaseName}}</span>
                     </div>
                   </div>
                 </th>
                 <td>
-                  <span class="badge badge-dot mr-4">
+                  <span class="badge badge-dot mr-4" *ngIf="arr.isactive; else elseBlock" (click)="isActive(arr._id,arr.isactive)">
+                    <i class="bg-success"></i>Active 
+                  </span>
+                  <ng-template #elseBlock>
+                    <span class="badge badge-dot mr-4" (click)="isActive(arr._id,arr.isactive)">
                     <i class="bg-warning"></i> InActive
-                  </span>
+                  </span></ng-template>
                 </td>
-               
+
                 <td class="text-right">
                   <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light">
-                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
-                      
+                    <a class="btn btn-sm btn-icon-only text-light" (click)="editData(arr._id);">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true" ></i>
+
                     </a>
-                    <a class="btn btn-sm btn-icon-only text-light">
-                     
+                    <a class="btn btn-sm btn-icon-only text-light" (click)="delete(arr._id)">
+
                       <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
                     </a>
-                  </div> 
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/angular.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Angular Now UI Kit PRO</span>
-                    </div>
                   </div>
-                </th>
-               
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> Active
-                  </span>
-                </td>
-               
-                <td class="text-right">
-                  <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light">
-                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
-                      
-                    </a>
-                    <a class="btn btn-sm btn-icon-only text-light">
-                     
-                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
-                    </a>
-                  </div> 
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/sketch.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Black Dashboard</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> Active
-                  </span>
-                </td>
-               
-                <td class="text-right">
-                  <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light">
-                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
-                      
-                    </a>
-                    <a class="btn btn-sm btn-icon-only text-light">
-                     
-                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
-                    </a>
-                  </div> 
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/react.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">React Material Dashboard</span>
-                    </div>
-                  </div>
-                </th>
-               
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i>Active
-                  </span>
-                </td>
-                
-                <td class="text-right">
-                  <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light">
-                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
-                      
-                    </a>
-                    <a class="btn btn-sm btn-icon-only text-light">
-                     
-                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
-                    </a>
-                  </div> 
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/vue.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Vue Paper UI Kit PRO</span>
-                    </div>
-                  </div>
-                </th>
-               
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> InActive
-                  </span>
-                </td>
-               
-                <td class="text-right">
-                  <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light">
-                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true"></i>
-                      
-                    </a>
-                    <a class="btn btn-sm btn-icon-only text-light">
-                     
-                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
-                    </a>
-                  </div> 
                 </td>
               </tr>
             </tbody>

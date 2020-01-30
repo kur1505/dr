@@ -1,14 +1,79 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Cookie } from '../../components/cookies/cookie';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   url = "http://localhost:3600/";
-  constructor(private http:HttpClient) { }
+  public headers = new HttpHeaders();
+  
+  constructor(private http:HttpClient, public router: Router, private cookie: Cookie) { }
   authrization(req) {
+    this.headers.set('Content-Type', 'application/json; charset=utf-8');
     var data = this.http.post(`${this.url}auth`,req);
     return data;
   }
+  addSpecialization(req){
+    
+    var data = this.http.post(`${this.url}specialization`,req);
+    return data;
+  } 
+  getAllSpecialization(){
+    
+    var data = this.http.get(`${this.url}specialization`,{});
+    return data;
+  } 
+  updateSpecialization(id,req){
+    
+    var data = this.http.patch(`${this.url}specialization/`+id,req);
+    return data;
+  } 
+
+  // ====================================START USER===============================
+  addUser(req){
+    var data=this.http.post(`${this.url}users`,req);
+    return data;
+  }
+  getAllUser(){
+    
+    var data = this.http.get(`${this.url}users`,{});
+    return data;
+  } 
+  // ====================================END USER===============================
+  // ====================================START DISEASE===============================
+  addDiease(req){
+    
+    var data = this.http.post(`${this.url}disease`,req);
+    return data;
+  } 
+  getAllDiseases(){
+    
+    var data = this.http.get(`${this.url}disease`,{});
+    return data;
+  } 
+  updateDieases(id,req){
+    
+    var data = this.http.patch(`${this.url}disease/`+id,req);
+    return data;
+  } 
+  // ====================================END DISEASE===============================
+    // ====================================START DISEASE STAGE===============================
+    addDieaseStage(req){
+    
+      var data = this.http.post(`${this.url}diseasestage`,req);
+      return data;
+    } 
+    getAllDiseaseStage(){
+      
+      var data = this.http.get(`${this.url}diseasestage`,{});
+      return data;
+    } 
+    updateDieaseStage(id,req){
+      
+      var data = this.http.patch(`${this.url}diseasestage/`+id,req);
+      return data;
+    } 
+    // ====================================END DISEASE STAGE===============================
 }
