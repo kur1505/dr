@@ -6,10 +6,10 @@
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">Hello Jesse</h1>
+        <h1 class="display-2 text-white">Hello   {{userArray?.name}}</h1>
         <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work
           and manage your projects or assigned tasks</p>
-        <a href="#!" class="btn btn-info">Edit profile</a>
+        <a (click)="enableordisablefield(false)" class="btn btn-info">Edit profile</a>
       </div>
     </div>
   </div>
@@ -52,16 +52,16 @@
               </div>
             </div>
           </div>
-          <div class="text-center">
+          <div class="text-center" *ngIf="userArray">
             <h3>
-              Jessica Jones
+              {{userArray.name}}
               <!-- <span class="font-weight-light">, 27</span> -->
             </h3>
             <div class="h5 font-weight-300">
-              +91-8290948702
+              +91- {{userArray.mobile}}
             </div>
             <div class="h5 font-weight-300">
-              kuldeep.gupta1505@gmail.com
+              {{userArray.email}}
             </div>
             <div class="h5 mt-4">
               MBBS
@@ -82,13 +82,13 @@
             <div class="col-8">
               <h3 class="mb-0">My account</h3>
             </div>
-            <div class="col-4 text-right">
+            <!-- <div class="col-4 text-right">
               <a href="#!" class="btn btn btn-primary">Save</a>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="card-body">
-          <form>
+        <div class="card-body" *ngIf="userArray">
+          <form #f="ngForm" (ngSubmit)="adduserprofile(f.value)" id="formMain">
             <h6 class="heading-small text-muted mb-4">Details</h6>
             <div class="pl-lg-4">
               <div class="row">
@@ -96,35 +96,35 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_doctorName">Doctor Name</label>
                     <input type="text" id="txt_doctorName" class="form-control form-control-alternative"
-                      placeholder="Doctor Name">
+                      placeholder="Doctor Name" [(ngModel)]="userArray.name" name="name" disabled="true">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="txt_clinicName">Clinic Name</label>
+                    <label class="form-control-label" for="txt_clinicName">Hospital/Clinic Name</label>
                     <input type="text" id="txt_clinicName" class="form-control form-control-alternative"
-                      placeholder="Clinic Name">
+                      placeholder="Clinic Name" [(ngModel)]="userprofile.hospitalname" name="hospitalname">
                   </div>
                 </div>
-                
+
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_qualification">Qualification</label>
                     <input type="text" id="txt_qualification" class="form-control form-control-alternative"
-                      placeholder="Qualification">
+                      placeholder="Qualification" [(ngModel)]="userprofile.qualification" name="qualification">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_Specialization">Specialization</label>
-                    <select type="text" id="txt_Specialization" class="form-control form-control-alternative"
-                      placeholder="Specialization">
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>D</option>
+                    <select id="ddl_Specialization" class="form-control" placeholder="Please select Specialization"
+                      name="specialization" [(ngModel)]="userprofile.specialization" (change)="getSpecilization()">
+                      <option selected="true" disabled value="0">Select Disease</option>
+                      <option *ngFor="let arr of specilizationArray; let i = index" value="{{arr.id}}"
+                        ng-selected="type= options[0]">{{arr.specialization}}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -134,14 +134,15 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_Phone">Phone</label>
                     <input type="number" min="0" id="txt_Phone" class="form-control form-control-alternative"
-                      placeholder="Phone">
+                      placeholder="Phone" [(ngModel)]="userprofile.phone" name="phone">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_Mobile">Mobile</label>
                     <input type="number" min="0" minlength="10" maxlength="10" id="txt_Mobile"
-                      class="form-control form-control-alternative" placeholder="Mobile">
+                      class="form-control form-control-alternative" placeholder="Mobile"
+                      [(ngModel)]="userprofile.mobile" name="mobile">
                   </div>
                 </div>
               </div>
@@ -150,6 +151,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_Consultationcontact">Consultation contact</label>
                     <input type="number" min="0" id="txt_Consultationcontact"
+                      [(ngModel)]="userprofile.consultationcontact" name="consultationcontact"
                       class="form-control form-control-alternative" placeholder="Consultation contact">
                   </div>
                 </div>
@@ -157,7 +159,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_website">Website</label>
                     <input type="text" id="txt_website" class="form-control form-control-alternative"
-                      placeholder="Website">
+                      placeholder="Website" [(ngModel)]="userprofile.website" name="website">
                   </div>
                 </div>
               </div>
@@ -170,8 +172,8 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Clinic Address"
-                      type="text">
+                    <input id="txt_address" class="form-control form-control-alternative" placeholder="Clinic Address"
+                      type="text" [(ngModel)]="userprofile.address" name="address">
                   </div>
                 </div>
               </div>
@@ -179,14 +181,16 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City">
+                    <input type="text" id="txt_city" class="form-control form-control-alternative" placeholder="City"
+                      [(ngModel)]="userprofile.city" name="city">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="drp_State">State</label>
-                    <select id="drp_State" class="form-control form-control-alternative" placeholder="State">
-                      <option selected="true" disabled="disabled">Choose State</option>    
+                    <select id="drp_State" name="state" class="form-control form-control-alternative"
+                      placeholder="State" [(ngModel)]="userprofile.state">
+                      <option selected="true" disabled="disabled" value="0">Choose State</option>
                       <option *ngFor="let key of getstate" [ngValue]="key.id">{{key.value}}</option>
                     </select>
                   </div>
@@ -194,8 +198,8 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-country">Postal code</label>
-                    <input type="number" min="0" id="input-postal-code" class="form-control form-control-alternative"
-                      placeholder="Postal code">
+                    <input type="number" min="0" id="txt_postalcode" class="form-control form-control-alternative"
+                      placeholder="Postal code" [(ngModel)]="userprofile.postalcode" name="postalcode">
                   </div>
                 </div>
               </div>
@@ -206,9 +210,14 @@
             <div class="pl-lg-4">
               <div class="form-group">
                 <label>About Me</label>
-                <textarea rows="4" class="form-control form-control-alternative"
-                  placeholder="A few words about you ..."></textarea>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."
+                  id="txt_about" [(ngModel)]="userprofile.aboutMe" name="aboutMe"></textarea>
               </div>
+            </div>
+            <div class="pl-lg-4 text-center">
+              <input type="submit" class="btn btn btn-primary" value="Save" id="btn_save" name="btn_save" />
+              <input type="button" class="btn btn btn-primary d-none" value="Update" id="btn_update"
+                name="btn_update" (click)="update(f.value,userprofile.id)"/>
             </div>
           </form>
         </div>

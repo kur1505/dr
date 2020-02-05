@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_doctorName">Patient Name</label>
                     <input type="text" id="txt_patientName" class="form-control form-control-alternative"
-                      placeholder="Enter Patient Name">
+                      [(ngModel)]="patientName" name="txt_patientName" placeholder="Enter Patient Name">
                   </div>
                 </div>
                 <div class="col-lg-3">
@@ -42,9 +42,9 @@
                     <label class="form-control-label" for="txt_dob">Date of birth</label>
                     <div class="input-group input-group-alternative">
 
-                      <input class="form-control form-control-alternative" id="txt_dob" (click)="d.toggle()"
-                        placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append" (click)="d.toggle()">
+                      <input class="form-control form-control-alternative" id="txt_dob" (click)="d1.toggle()"
+                        placeholder="yyyy-mm-dd" name="txt_dob" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker">
+                      <div class="input-group-append" (click)="d1.toggle()">
                         <button class="btn btn-outline-secondary ni ni-calendar-grid-58" type="button"></button>
                         <!-- <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span> -->
                       </div>
@@ -54,15 +54,16 @@
                 <div class="col-lg-2">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_age">Age</label>
-                    <input type="text" id="txt_age" class="form-control form-control-alternative" placeholder="Age"
-                      disabled>
+                    <input type="text" id="txt_age" [(ngModel)]="age" name="txt_age"
+                      class="form-control form-control-alternative" placeholder="Age" disabled>
                   </div>
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_Mobile">Mobile</label>
                     <input type="number" min="0" minlength="10" maxlength="10" id="txt_Mobile"
-                      class="form-control form-control-alternative" placeholder="Mobile">
+                      class="form-control form-control-alternative" placeholder="Mobile" [(ngModel)]="mobile"
+                      name="txt_Mobile">
                   </div>
                 </div>
               </div>
@@ -71,20 +72,21 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_pettype">Pet Type</label>
                     <input type="text" id="txt_pettype" class="form-control form-control-alternative"
-                      placeholder="Pet Type">
+                      placeholder="Pet Type" [(ngModel)]="pettype" name="txt_pettype">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_breed">Breed</label>
-                    <input type="text" id="txt_breed" class="form-control form-control-alternative" placeholder="Breed">
+                    <input type="text" id="txt_breed" class="form-control form-control-alternative" placeholder="Breed"
+                      [(ngModel)]="breed" name="txt_breed">
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_symptoms">Symptoms</label>
                     <input type="text" id="txt_symptoms" class="form-control form-control-alternative"
-                      placeholder="Symptoms">
+                      placeholder="Symptoms" [(ngModel)]="symptoms" name="txt_symptoms">
                   </div>
                 </div>
               </div>
@@ -92,24 +94,25 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_deasease_name">Disease Name</label>
-                    <select type="text" id="txt_deasease_name" class="form-control form-control-alternative"
-                      placeholder="Disease Name" required ngbTooltip="Select Deasease">
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
-                      <option>D</option>
+                    <select id="ddl_Disease" class="form-control" placeholder="Please select Diseases"
+                      name="ddl_Disease" [(ngModel)]="type" (change)="getdiseasestage()">
+                      <option selected="true" disabled value="0">Select Disease</option>
+                      <option *ngFor="let arr of diseasesArray; let i = index" value="{{arr.id}}"
+                        ng-selected="type= options[0]">{{arr.diseaseName}}
+                      </option>
+
                     </select>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_DiseaseStage">Disease Stage</label>
-                    <select id="txt_DiseaseStage" class="form-control form-control-alternative"
-                      placeholder="Please select Stage" name="txt_DiseaseStage" required ngbTooltip="Select Stage">
-                      <option>AE</option>
-                      <option>BE</option>
-                      <option>CE</option>
-                      <option>DE</option>
+                    <select id="ddl_DiseaseStage" class="form-control" placeholder="Please select Diseases"
+                      name="ddl_DiseaseStage" [(ngModel)]="DiseaseStage" (change)="getmedicine(true)">
+                      <option selected="true" disabled value="0">Select Disease Stage</option>
+                      <option *ngFor="let arr of diseasesStageArray; let i = index" value="{{arr._id}}"
+                        ng-selected="type= options[0]">{{arr.diseaseStageName}}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -117,7 +120,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_LFDesease">Length of Disease</label>
                     <input type="text" id="txt_LFDesease" class="form-control form-control-alternative"
-                      placeholder="Lenghth of desease">
+                      placeholder="Lenghth of desease" [(ngModel)]="LFDesease" name="txt_LFDesease">
                   </div>
                 </div>
               </div>
@@ -154,8 +157,8 @@
             </div>
             <hr class="my-4" />
             <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Add Prescription</h6>
-            <div class="pl-lg-4">
+            <h6 class="heading-small text-muted mb-4" *ngIf="medicineArray">Add Prescription</h6>
+            <div class="pl-lg-4" *ngIf="medicineArray">
               <div class="row">
                 <div class="card shadow">
                   <div class="table-responsive">
@@ -172,24 +175,25 @@
                       <tbody>
                         <tr *ngFor="let dynamic of dynamicArray; let i = index;">
                           <td>
-                            <select id="txt_Disease" class="form-control" placeholder="Please select Diseases" name="txt_Disease" required>
-                              <option>A</option>  
-                              <option>B</option>  
-                              <option>C</option>  
-                              <option>D</option>  
+                            <select id="txt_Disease" class="form-control" placeholder="Please select Diseases"
+                              name="txt_Disease" [(ngModel)]="Medicine">
+                              <option selected="true" disabled value="0">Select Medicine</option>
+                              <option *ngFor="let arr of medicineArray; let i = index" value="{{arr._id}}">
+                                {{arr.medicineName}}
+                              </option>
                             </select>
                           </td>
                           <td>
-                            <input type="text" id="txt_HMTimes" class="form-control form-control-alternative"
-                            placeholder="How many Times">
+                            <input type="number" id="txt_HMTimes" class="form-control form-control-alternative"
+                              placeholder="How many Times" name="txt_HMTimes">
                           </td>
                           <td>
-                            <input type="text" id="txt_NODays" class="form-control form-control-alternative"
-                            placeholder="Number Of Days">
+                            <input type="number" id="txt_NODays" class="form-control form-control-alternative"
+                              placeholder="Number Of Days" name="txt_NODays">
                           </td>
                           <td>
                             <input type="text" id="txt_SPInstruction" class="form-control form-control-alternative"
-                            placeholder="Special Instruction">
+                              placeholder="Special Instruction" name="txt_SPInstruction">
                           </td>
                           <td class="text-center">
                             <div placement="bottom-center">
@@ -198,10 +202,10 @@
                                 
                               </a> -->
                               <a class="btn btn-sm btn-icon-only text-light" (click)="deleteRow(i)">
-                               
+
                                 <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
                               </a>
-                            </div> 
+                            </div>
                           </td>
                         </tr>
                         <!-- <tr>
@@ -437,10 +441,11 @@
                         <tr>
                           <td colspan="5">
                             <nav aria-label="...">
-                              <a class="btn btn-sm text-primary float-right" (click)="addRow(i)"> <i class="ni ni-fat-add"></i> Add More</a>
+                              <a class="btn btn-sm text-primary float-right" (click)="addRow(i)"> <i
+                                  class="ni ni-fat-add"></i> Add More</a>
                             </nav>
                           </td>
-                          
+
                         </tr>
                       </tbody>
                     </table>

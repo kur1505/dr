@@ -1,5 +1,5 @@
 export class DynamicGrid{     
-    title1:string;  
-    title2:string;  
-    title3:string;  
+    HMTimes:string;  
+    NODays:string;  
+    SPInstruction:string;  
 } 

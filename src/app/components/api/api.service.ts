@@ -40,6 +40,25 @@ export class ApiService {
     
     var data = this.http.get(`${this.url}users`,{});
     return data;
+  }
+  getUserbyid(){
+    
+    var data = this.http.get(`${this.url}usersbyid`,{});
+    return data;
+  }  
+  addUserProfile(req){
+    var data=this.http.post(`${this.url}usersprofile`,req);
+    return data;
+  }
+  getAllUserProfile(){
+    
+    var data = this.http.get(`${this.url}usersprofilebyid`,{});
+    return data;
+  }
+  updateUserProfile(id,req){
+    
+    var data = this.http.patch(`${this.url}usersprofile/`+id,req);
+    return data;
   } 
   // ====================================END USER===============================
   // ====================================START DISEASE===============================
@@ -75,5 +94,32 @@ export class ApiService {
       var data = this.http.patch(`${this.url}diseasestage/`+id,req);
       return data;
     } 
+    getAllDiseaseStagebyDID(id){
+      
+      var data = this.http.get(`${this.url}diseaseId/`+id,{});
+      return data;
+    } 
     // ====================================END DISEASE STAGE===============================
+    // ====================================START MEDICINE===============================
+    addMedicine(req){
+    
+      var data = this.http.post(`${this.url}medicine`,req);
+      return data;
+    } 
+    getMedicine(){
+      
+      var data = this.http.get(`${this.url}medicine`,{});
+      return data;
+    } 
+    updateMedicine(id,req){
+      
+      var data = this.http.patch(`${this.url}medicine/`+id,req);
+      return data;
+    } 
+    getMedicineByDSID(req){
+      console.log(req)
+      var data = this.http.post(`${this.url}medicinebyDSID`,req);
+      return data;
+    } 
+    // ====================================END MEDICINE===============================
 }

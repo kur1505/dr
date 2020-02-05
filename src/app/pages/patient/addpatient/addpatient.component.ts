@@ -1,26 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicGrid } from './grid.model'; 
+import { ApiService } from 'src/app/components/api/api.service';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import $ from "jquery";
 @Component({
   selector: 'app-addpatient',
   templateUrl: './addpatient.component.html',
   styleUrls: ['./addpatient.component.scss']
 })
 export class AddPatientComponent implements OnInit {
-
+  public diseasesArray;
+  public diseasesStageArray;
+  public medicineArray;
   dynamicArray: Array<DynamicGrid> = [];  
   newDynamic: any = {};  
-  constructor() { }
+  public type;
+  public DiseaseStage;
+  public Medicine;
+  constructor(private apiservice: ApiService, public router: Router) { }
 
   ngOnInit() {
-    this.newDynamic = {title1: "", title2: "",title3:""};  
-    this.dynamicArray.push(this.newDynamic);  
+    this.newDynamic =  {HMTimes: "", NODays: "",SPInstruction:""};  
+    this.dynamicArray.push(this.newDynamic); 
+    this.getdiseases();
+    this.type = "0";
+    this.DiseaseStage="0"; 
+    this.Medicine="0"
     console.log(this.dynamicArray);  
   }
   addRow(index) {    
-    console.log(this.dynamicArray.length);  
-    this.newDynamic = {title1: "", title2: "",title3:""};  
+    console.log(this.dynamicArray);  
+    this.newDynamic = {HMTimes: "", NODays: "",SPInstruction:""};  
     this.dynamicArray.push(this.newDynamic);  
     Swal.fire('New row added successfully', 'New Row',"success");  
     
@@ -37,40 +48,40 @@ deleteRow(index) {
         return true;  
     }  
   }
-  getstate= [{id:'AP',value:'Andhra Pradesh'},
-  {id:'AR',value:'Arunachal Pradesh'},
-  {id:'AS',value:'Assam'},
-  {id:'BR',value:'Bihar'},
-  {id:'CT',value:'Chhattisgarh'},
-  {id:'GA',value:'Goa'},
-  {id:'GJ',value:'Gujarat'},
-  {id:'HR',value:'Haryana'},
-  {id:'HP',value:'Himachal Pradesh'},
-  {id:'JK',value:'Jammu and Kashmir'},
-  {id:'JH',value:'Jharkhand'},
-  {id:'KA',value:'Karnataka'},
-  {id:'KL',value:'Kerala'},
-  {id:'MP',value:'Madhya Pradesh'},
-  {id:'MH',value:'Maharashtra'},
-  {id:'MN',value:'Manipur'},
-  {id:'ML',value:'Meghalaya'},
-  {id:'MZ',value:'Mizoram'},
-  {id:'NL',value:'Nagaland'},
-  {id:'OR',value:'Odisha'},
-  {id:'PB',value:'Punjab'},
-  {id:'RJ',value:'Rajasthan'},
-  {id:'SK',value:'Sikkim'},
-  {id:'TN',value:'Tamil Nadu'},
-  {id:'TG',value:'Telangana'},
-  {id:'TR',value:'Tripura'},
-  {id:'UT',value:'Uttarakhand'},
-  {id:'UP',value:'Uttar Pradesh'},
-  {id:'WB',value:'West Bengal'},
-  {id:'AN',value:'Andaman and Nicobar Islands'},
-  {id:'CH',value:'Chandigarh'},
-  {id:'DN',value:'Dadra and Nagar Haveli'},
-  {id:'DD',value:'Daman and Diu'},
-  {id:'DL',value:'Delhi'},
-  {id:'LD',value:'Lakshadweep'},
-  {id:'PY',value:'Puducherry'}]
+  getdiseases() {
+    this.apiservice.getAllDiseases().subscribe(
+      res => {
+        this.diseasesArray = res;
+      },
+      err => {
+        Swal.fire('Oops...', 'Please try Again', 'error');
+      });
+  }
+  getdiseasestage() {
+    
+    let Did=$("#ddl_Disease").val();
+    this.apiservice.getAllDiseaseStagebyDID(Did).subscribe(
+      res => {
+       
+        this.diseasesStageArray = res;
+        this.DiseaseStage="0";
+        this.getmedicine(false);
+        //console.log(res);
+      },
+      err => {
+      });
+  }
+  getmedicine(flag){
+    let Did=$("#ddl_Disease").val();
+    let DSid=null;
+    if(flag){
+       DSid=$("#ddl_DiseaseStage").val();
+    }
+    
+    this.apiservice.getMedicineByDSID({ddl_Disease:Did,ddl_DiseaseStage:DSid}).subscribe(res=>{
+      this.medicineArray=res;
+      this.Medicine=0;
+    })
+  }
+  
 }
