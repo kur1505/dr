@@ -6,7 +6,7 @@ import { Cookie } from '../../components/cookies/cookie';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "http://localhost:3600/";
+  url = "https://hkhdrapi.herokuapp.com/";
   public headers = new HttpHeaders();
   
   constructor(private http:HttpClient, public router: Router, private cookie: Cookie) { }
