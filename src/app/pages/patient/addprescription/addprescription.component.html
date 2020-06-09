@@ -3,31 +3,10 @@
   <!-- Mask -->
   <span class="mask bg-grad-final opacity-8"></span>
   <!-- Header container -->
-  <div class="container-fluid align-items-center">
+  <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-12 col-md-10">
         <h1 class="display-2 text-white">Add Patients</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xl-9 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-auto pt-2">
-                <span class="h2 font-weight-bold mb-0">Search :</span>
-              </div>
-              <div class="col">
-                <input id="txt_Name" class="form-control" placeholder="Please Enter Patient ID/Mobile/Name"
-                  name="txt_Search" required>
-              </div>
-              <div class="col-auto">
-                <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Search"
-                  required>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -46,98 +25,70 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" >
          
-          <form #f="ngForm" (ngSubmit)="addpatient(f.value)" id="formMain">
+          <form #f="ngForm" (ngSubmit)="addpatientprescription(f.value)" id="formMain">
            
             <h6 class="heading-small text-muted mb-4">Details</h6>
             <div class="pl-lg-4">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_doctorName">Patient Name</label>
-                    <input type="text" id="txt_patientName" class="form-control form-control-alternative"
-                      [(ngModel)]="patientName" name="patientName" placeholder="Enter Patient Name">
+                <div class="row pt-2 pb-2">
+                  <div class="col-lg-4">
+                      <label class="form-control-label" >Patient ID :</label>
+                      <label class="description pl-md-2" name="patientId" [(ngModel)]="patient._id">{{patient._id}}</label>
                   </div>
+                  <div class="col-lg-4">
+                    <label class="form-control-label">Patient Name :</label>
+                    <label class="description pl-md-2">{{patient.patientName}}</label>
                 </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_dob">Date of birth</label>
-                    <div class="input-group input-group-alternative">
-
-                      <input class="form-control form-control-alternative" id="txt_dob" (click)="d1.toggle()"
-                        placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker" (ngModelChange)="setage();">
-                      <div class="input-group-append" (click)="d1.toggle()">
-                        <button class="btn btn-outline-secondary ni ni-calendar-grid-58" type="button"></button>
-                        <!-- <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span> -->
-                      </div>
+                <div class="col-lg-4">
+                  <label class="form-control-label">Mobile :</label>
+                  <label class="description pl-md-2">{{patient.mobile}}</label>
+              </div>
+                  </div>
+                  <div class="row pt-2 pb-2">
+                    <div class="col-lg-4">
+                      <label class="form-control-label">Email :</label>
+                      <label class="description pl-md-2">{{patient.email}}</label>
+                  </div>
+                  <div class="col-lg-4">
+                    <label class="form-control-label">Date of birth :</label>
+                    <label class="description pl-md-2">{{patient.dob | date:'mediumDate'}}</label>
+                    </div>
+                  <div class="col-lg-4">
+                    <label class="form-control-label">Age :</label>
+                    <label class="description pl-md-2">{{patient.age}}</label>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-2">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_age">Age</label>
-                    <input type="text" id="txt_age" [(ngModel)]="age" name="age"
-                      class="form-control form-control-alternative" placeholder="Age" disabled>
+                  <div class="row pt-2 pb-2">
+                    <div class="col-lg-4">
+                      <label class="form-control-label">Gender :</label>
+                      <label class="description pl-md-2">{{patient.gender}}</label>
                   </div>
-                </div>
-                <div class="col-lg-3">
+                      <div class="col-lg-4">
+                        <label class="form-control-label">Pet Type :</label>
+                        <label class="description pl-md-2">{{patient.pettype}}</label>
+                      </div>
+                      
+                  
+                    <div class="col-lg-4">
+                      <label class="form-control-label">Breed :</label>
+                      <label class="description pl-md-2">{{patient.breed}}</label>
+                      </div>
+                  </div>
+              <div class="row">
+                <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="txt_Mobile">Mobile</label>
-                    <input type="number" min="0" minlength="10" maxlength="10" id="txt_Mobile"
-                      class="form-control form-control-alternative" placeholder="Mobile" [(ngModel)]="mobile"
-                      name="mobile">
+                    <label class="form-control-label">Address :</label>
+                  <label class="description pl-md-2">{{patient.address}}</label>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_email">Email</label>
-                    <input type="text" id="txt_email" class="form-control form-control-alternative"
-                      placeholder="Email" [(ngModel)]="email" name="email">
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label class="form-control-label" for="ddl_gender">Gender</label>
-                    <select id="ddl_gender" class="form-control" placeholder="Please select Gender"
-                      name="gender" [(ngModel)]="gender">
-                      <option [selected]="true" disabled value="0">Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_pettype">Pet Type</label>
-                    <input type="text" id="txt_pettype" class="form-control form-control-alternative"
-                      placeholder="Pet Type" [(ngModel)]="pettype" name="pettype">
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_breed">Breed</label>
-                    <input type="text" id="txt_breed" class="form-control form-control-alternative" placeholder="Breed"
-                      [(ngModel)]="breed" name="breed">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="txt_address">Address</label>
-                    <textarea type="text" id="txt_address" class="form-control form-control-alternative"
-                      placeholder="Address" [(ngModel)]="address" name="address" maxlength="512"></textarea>
-                  </div>
-                </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                   <div class="form-group">
                     <label class="form-control-label" for="txt_symptoms">Symptoms</label>
                     <textarea type="text" id="txt_symptoms" class="form-control form-control-alternative"
-                      placeholder="Symptoms" [(ngModel)]="symptoms" name="symptoms" maxlength="512"></textarea>
+                      placeholder="Symptoms" [(ngModel)]="patient.prescription.symptoms" name="symptoms" maxlength="512"></textarea>
                   </div>
                 </div>
               </div>
@@ -146,10 +97,9 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_deasease_name">Disease Name</label>
                     <select id="ddl_Disease" class="form-control" placeholder="Please select Diseases"
-                      name="disease" [(ngModel)]="type" (change)="getdiseasestage()">
+                      name="disease" [(ngModel)]="patient.prescription.disease" (change)="getdiseasestage()">
                       <option selected="true" disabled value="0">Select Disease</option>
-                      <option *ngFor="let arr of diseasesArray; let i = index" value="{{arr.id}}"
-                        ng-selected="type= options[0]">{{arr.diseaseName}}
+                      <option *ngFor="let arr of diseasesArray; let i = index" value="{{arr.id}}">{{arr.diseaseName}}
                       </option>
 
                     </select>
@@ -159,10 +109,9 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_DiseaseStage">Disease Stage</label>
                     <select id="ddl_DiseaseStage" class="form-control" placeholder="Please select Diseases"
-                      name="diseaseStage" [(ngModel)]="DiseaseStage" (change)="getmedicine(true)">
+                      name="diseaseStage" [(ngModel)]="patient.prescription.diseaseStage" (change)="getmedicine(true)">
                       <option selected="true" disabled value="0">Select Disease Stage</option>
-                      <option *ngFor="let arr of diseasesStageArray; let i = index" value="{{arr._id}}"
-                        ng-selected="type= options[0]">{{arr.diseaseStageName}}
+                      <option *ngFor="let arr of diseasesStageArray; let i = index" value="{{arr._id}}">{{arr.diseaseStageName}}
                       </option>
                     </select>
                   </div>
@@ -171,15 +120,15 @@
                   <div class="form-group">
                     <label class="form-control-label" for="txt_LFDesease">Length of Disease</label>
                     <input type="text" id="lFDesease" class="form-control form-control-alternative"
-                      placeholder="Lenghth of desease" [(ngModel)]="LFDesease" name="lFDesease">
+                      placeholder="Lenghth of desease" [(ngModel)]="patient.prescription.lFDesease" name="lFDesease">
                   </div>
                 </div>
               </div>
             </div>
             <hr class="my-4" />
             <!-- Address -->
-            <h6 class="heading-small text-muted mb-4" *ngIf="medicineArray">Add Prescription</h6>
-            <div class="pl-lg-4" *ngIf="medicineArray">
+            <h6 class="heading-small text-muted mb-4">Prescription</h6>
+            <div class="pl-lg-4">
               <div class="row">
                 <div class="card shadow">
                   <div class="table-responsive">
@@ -197,7 +146,7 @@
                         <tr *ngFor="let dynamic of dynamicArray; let i = index;">
                           <td>
                             <select id="txt_Disease" class="form-control" placeholder="Please select Diseases"
-                              name="txt_Disease" [(ngModel)]="dynamicArray[i].MeName">
+                              name="txt_Disease" [(ngModel)]="dynamic.MeName">
                               <option selected="true" disabled value="0">Select Medicine</option>
                               <option *ngFor="let arr of medicineArray; let i = index" value="{{arr._id}}">
                                 {{arr.medicineName}}
@@ -206,15 +155,15 @@
                           </td>
                           <td>
                             <input type="number" id="txt_HMTimes" class="form-control form-control-alternative"
-                              placeholder="How many Times" name="txt_HMTimes" [(ngModel)]="dynamicArray[i].HMTimes">
+                              placeholder="How many Times" name="txt_HMTimes" [(ngModel)]="dynamic.HMTimes">
                           </td>
                           <td>
                             <input type="number" id="txt_NODays" class="form-control form-control-alternative"
-                              placeholder="Number Of Days" name="txt_NODays" [(ngModel)]="dynamicArray[i].NODays">
+                              placeholder="Number Of Days" name="txt_NODays" [(ngModel)]="dynamic.NODays">
                           </td>
                           <td>
                             <input type="text" id="txt_SPInstruction" class="form-control form-control-alternative"
-                              placeholder="Special Instruction" name="txt_SPInstruction" [(ngModel)]="dynamicArray[i].SPInstruction">
+                              placeholder="Special Instruction" name="txt_SPInstruction" [(ngModel)]="dynamic.SPInstruction">
                           </td>
                           <td class="text-center">
                             <div placement="bottom-center">
@@ -261,7 +210,7 @@
                       <input type="radio" name="optradio" checked (click)="hideoption(true,1)">Yes
                     </label>
                     <label class="btn btn-md btn-primary">
-                      <input type="radio" name="optradio" (click)="hideoption(false,1)">No
+                      <input type="radio" name="optradio" (click)="hideoption(false,1)" *ngIf="patient.prescription.followupNeed===false ? 'checked' : 'non' ">No
                     </label>
                   </div>
                 </div>
@@ -283,7 +232,7 @@
               <div class="col-lg-4" *ngIf="hide">
                 <div class="form-group">
                   <label class="form-control-label" for="txt_Ftime">Follow-up Date</label>
-                  <ngb-timepicker [(ngModel)]="userArray.userTimeModel" [meridian]="true" name="timeFollow"></ngb-timepicker>
+                  <ngb-timepicker [(ngModel)]="patient.prescription.timeFollow" [meridian]="true" name="timeFollow"></ngb-timepicker>
                 </div>
               </div>
             </div>
@@ -307,7 +256,7 @@
                 <div class="form-group">
                   <label class="form-control-label" for="txt_VFDate">Vaccination Name</label>
                   <select id="ddl_Vaccination" class="form-control" placeholder="Please select Vaccination"
-                      name="vaccination" [(ngModel)]="vaccination">
+                      name="vaccination" [(ngModel)]="patient.prescription.vaccination">
                       <option selected="true" disabled value="0">Select Vaccination</option>
                       <option *ngFor="let arr of vaccination; let i = index" value="{{arr.id}}" ng-selected="type= options[0]">{{arr.vaccination}}
                       </option>
@@ -332,7 +281,7 @@
               <div class="col-lg-3" *ngIf="Vhide">
                 <div class="form-group">
                   <label class="form-control-label" for="txt_VFtime">Follow-up Date</label>
-                  <ngb-timepicker [(ngModel)]="userArray.userTimeModel" [meridian]="true" name="vtimeFollow"></ngb-timepicker>
+                  <ngb-timepicker [(ngModel)]="patient.prescription.vtimeFollow" [meridian]="true" name="vtimeFollow"></ngb-timepicker>
                 </div>
               </div>
             </div>
@@ -343,7 +292,7 @@
               <div class="form-group">
                 <label>About Me</label>
                 <textarea rows="4" class="form-control form-control-alternative"
-                  placeholder="A few words about you ..." [(ngModel)]="txt_aboutme" name="aboutMe"></textarea>
+                  placeholder="A few words about you ..." [(ngModel)]="patient.prescription.aboutMe" name="aboutMe"></textarea>
               </div>
             </div>
             <input type="submit" class="btn btn btn-primary" value="Save" id="btn_save" name="btn_save" />

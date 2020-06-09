@@ -10,4 +10,7 @@ export class UserProfile{
     state:string;
     postalcode: string;
     aboutMe: string;
+    patientCount: string;
+    diseasesCount: string;
+    medicinesCount: string;
 }

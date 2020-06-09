@@ -28,6 +28,14 @@
                 </div>
               </a>
             </div>
+            <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel === 1000'>
+              <button type="button" placement="top-center" ngbTooltip="Vaccination" class="btn-icon-clipboard" [routerLink]="['/vaccination']">
+                <div>
+                  <i class="ni ni-app"></i>
+                  <span>Vaccination</span>
+                </div>
+              </button>
+            </div>
             <div class="col-lg-3 col-md-6" *ngIf='user.permissionLevel !== 3000'>
               <button type="button" placement="top-center"  ngbTooltip="Diseases"  class="btn-icon-clipboard" [routerLink]="['/diseases']">
                 <div>

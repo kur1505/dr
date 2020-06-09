@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
@@ -6,8 +7,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+    <a class="navbar-brand pt-0" style="padding-bottom: 0px;" routerLinkActive="active" [routerLink]="['/dashboard']">
+      <img src="./assets/img/brand/logo.png" style="max-height: 8.5em;" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -96,6 +97,7 @@
               </a>
           </li>
       </ul>
+      
       <!-- Divider -->
       <hr class="my-3">
       <!-- Heading -->
@@ -112,12 +114,36 @@
             <i class="ni ni-palette"></i> Foundation
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/alerts">
-            <i class="ni ni-ui-04"></i> Components
+        <li class="nav-item drp">
+          <a class="nav-link" data-toggle="collapse" href="#navbar-tables" aria-expanded="false" onclick="return false">
+            <i class="ni ni-align-left-2 text-default"></i>
+            <span class="nav-link-text">Tables</span>
           </a>
+          <div class="collapse" id="navbar-tables">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="../../pages/tables/tables.html" class="nav-link active">
+                  <span class="sidenav-mini-icon"> T </span>
+                  <span class="sidenav-normal"> Tables </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../pages/tables/sortable.html" class="nav-link">
+                  <span class="sidenav-mini-icon"> S </span>
+                  <span class="sidenav-normal"> Sortable </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../pages/tables/datatables.html" class="nav-link">
+                  <span class="sidenav-mini-icon"> D </span>
+                  <span class="sidenav-normal"> Datatables </span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
   </div>
+  
 </nav>

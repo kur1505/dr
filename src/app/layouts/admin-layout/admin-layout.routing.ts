@@ -12,6 +12,11 @@ import { DiseasesStageComponent } from '../../pages/masters/diseases-stage/disea
 import { MedicineComponent } from '../../pages/masters/medicine/medicine.component';
 import { PatientComponent } from '../../pages/patient/patient.component';
 import { AddPatientComponent } from '../../pages/patient/addpatient/addpatient.component';
+import { VaccinationComponent } from '../../pages/masters/vaccination/vaccination.component';
+import { PrescriptionComponent } from '../../pages/patient/prescription/prescription.component';
+import { AddPrescriptionComponent } from '../../pages/patient/addprescription/addprescription.component';
+import { NewPrescriptionComponent } from '../../pages/patient/newprescription/newprescription.component';
+import { VaccinationPatientComponent } from '../../pages/patient/vaccinationpatient/vaccinationpatient.component';
 import{AuthGuard} from '../../components/api/auth.guard';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
@@ -25,5 +30,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'diseases-stage', component: DiseasesStageComponent,canActivate:[AuthGuard] },
     { path: 'medicine', component: MedicineComponent,canActivate:[AuthGuard] },
     { path: 'patient', component: PatientComponent,canActivate:[AuthGuard] },
-    {path:'addpatient',component:AddPatientComponent,canActivate:[AuthGuard]}
+    {path:'addpatient',component:AddPatientComponent,canActivate:[AuthGuard]},
+    {path:'vaccination',component:VaccinationComponent,canActivate:[AuthGuard]},
+    {path:'prescription/:id',component:PrescriptionComponent,canActivate:[AuthGuard]},
+    {path:'addprescription/:id',component:AddPrescriptionComponent,canActivate:[AuthGuard]},
+    {path:'newprescription/:id',component:NewPrescriptionComponent,canActivate:[AuthGuard]},
+    {path:'vaccinationpatient',component:VaccinationPatientComponent,canActivate:[AuthGuard]}
 ];

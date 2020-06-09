@@ -1,0 +1,94 @@
+<div class="header bg-grad-final pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-9 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <form role="form" #f="ngForm"  (ngSubmit)="addvaccination(f.value)">
+                <div class="row">
+                  <div class="col-auto pt-2">
+                    <span class="h2 font-weight-bold mb-0">Vaccination Name :</span>
+                  </div>
+                  <div class="col">
+                    <input id="txt_Name" class="form-control" placeholder="Enter Vaccination Name"
+                      [(ngModel)]="value" value="{{data}}" name="txt_Name" required>
+                  </div>
+                  <div class="col-auto">
+                    <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Save">
+                    <input id="txt_Update" class="btn btn-outline btn-info d-none" type="button" name="txt_Update" value="Update" (click)="update(f.value,id)">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0 d-inline">Vaccination table</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Vaccination Name</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-right pr-5">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let arr of vaccinationArray; let i = index">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{arr.vaccination}}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>
+                  <span class="badge badge-dot mr-4" *ngIf="arr.isactive; else elseBlock" (click)="isActive(arr._id,arr.isactive)">
+                    <i class="bg-success"></i>Active 
+                  </span>
+                  <ng-template #elseBlock>
+                    <span class="badge badge-dot mr-4" (click)="isActive(arr._id,arr.isactive)">
+                    <i class="bg-warning"></i> InActive
+                  </span></ng-template>
+                </td>
+
+                <td class="text-right">
+                  <div placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light" (click)="editData(arr._id);">
+                      <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true" ></i>
+
+                    </a>
+                    <a class="btn btn-sm btn-icon-only text-light" (click)="delete(arr._id)">
+
+                      <i class="fas fa-trash text-red fa-lg" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

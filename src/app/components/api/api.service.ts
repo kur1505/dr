@@ -6,7 +6,8 @@ import { Cookie } from '../../components/cookies/cookie';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "https://hkhdrapi.herokuapp.com/";
+ //url = "https://hkhdrapi.herokuapp.com/";
+ url="http://localhost:3600/"
   public headers = new HttpHeaders();
   
   constructor(private http:HttpClient, public router: Router, private cookie: Cookie) { }
@@ -122,4 +123,68 @@ export class ApiService {
       return data;
     } 
     // ====================================END MEDICINE===============================
+    addVaccination(req){
+    
+      var data = this.http.post(`${this.url}vaccination`,req);
+      return data;
+    } 
+    getAllVaccination(){
+      
+      var data = this.http.get(`${this.url}vaccination`,{});
+      return data;
+    } 
+    updateVaccination(id,req){
+      
+      var data = this.http.patch(`${this.url}vaccination/`+id,req);
+      return data;
+    } 
+ // ====================================START Patient===============================
+ addPatient(req){
+  var data=this.http.post(`${this.url}patient`,req);
+  return data;
+}
+getAllPatient(){
+  
+  var data = this.http.get(`${this.url}patient`,{});
+  return data;
+}
+getAllPatientbyVaccination(){
+  
+  var data = this.http.get(`${this.url}patientbyvaccination`,{});
+  return data;
+}
+getPatientbyid(id){
+  
+  var data = this.http.get(`${this.url}patientbyid/`+id,{});
+  return data;
+}  
+
+updatePatient(id,req){
+  
+  var data = this.http.patch(`${this.url}patient/`+id,req);
+  return data;
+} 
+// ====================================END Patient===============================  
+// ====================================START Patient Prescription===============================
+addPatientPrescription(req){
+  var data=this.http.post(`${this.url}patientprescription`,req);
+  return data;
+}
+getAllPatientPrescription(){
+  
+  var data = this.http.get(`${this.url}patientprescription`,{});
+  return data;
+}
+getPatientPrescriptionbyid(id){
+  
+  var data = this.http.get(`${this.url}patientprescriptionbyid/`+id,{});
+  return data;
+}  
+
+updatePatientPrescription(id,req){
+  
+  var data = this.http.patch(`${this.url}patientprescription/`+id,req);
+  return data;
+} 
+// ====================================END Patient Prescription===============================  
 }

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import $ from "jquery";
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.scss']
+  selector: 'app-vaccinationpatient',
+  templateUrl: './vaccinationpatient.component.html',
+  styleUrls: ['./vaccinationpatient.component.scss']
 })
-export class PatientComponent implements OnInit {
+export class VaccinationPatientComponent implements OnInit {
  public patientArray;
   
 
@@ -20,7 +20,7 @@ export class PatientComponent implements OnInit {
   }
  
   getpatient() {
-    this.apiservice.getAllPatient().subscribe(
+    this.apiservice.getAllPatientbyVaccination().subscribe(
       res => {
         //console.log(res);
         this.patientArray = res;

@@ -95,7 +95,7 @@ export class UserProfileComponent implements OnInit {
       (res) => {
         Object.assign(this.userprofile, res);
         this.enableordisablefield(true);
-        //console.log(this.userprofile);
+        console.log(this.userprofile);
 
       },
       err => {
