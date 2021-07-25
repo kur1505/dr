@@ -1,6 +1,9 @@
 {
   "name": "argon-dashboard-angular",
   "version": "1.0.1",
+  "engines": {
+    "node": "10.16.3"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
