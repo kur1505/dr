@@ -2,7 +2,7 @@
   "name": "argon-dashboard-angular",
   "version": "1.0.1",
   "engines": {
-    "node": "14.15",
+    "node": "14.17.3",
     "npm": "7.20.1"
   },
   "scripts": {
