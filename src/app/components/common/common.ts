@@ -6,7 +6,7 @@ import { Cookie } from '../../components/cookies/cookie';
   providedIn: 'root'
 })
 export class Common {
-  url = "http://localhost:3600/";
+  url = "https://hkhdrapi.herokuapp.com/";
   public headers = new HttpHeaders();
   
   constructor(public router: Router, private cookie: Cookie) { }

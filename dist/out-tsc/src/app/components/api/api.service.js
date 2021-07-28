@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 var ApiService = /** @class */ (function () {
     function ApiService(http) {
         this.http = http;
-        this.url = "http://localhost:3600/";
+        this.url = "https://hkhdrapi.herokuapp.com/";
     }
     ApiService.prototype.authrization = function (req) {
         var data = this.http.post(this.url + "auth", req);
