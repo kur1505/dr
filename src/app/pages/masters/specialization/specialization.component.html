@@ -13,11 +13,11 @@
                   </div>
                   <div class="col">
                     <input id="txt_Name" class="form-control" placeholder="Enter Specialization Name"
-                      [(ngModel)]="value" value="{{data}}" name="txt_Name" required>
+                      [(ngModel)]="value" name="txt_Name" required>
                   </div>
                   <div class="col-auto">
                     <input id="txt_Save" class="btn btn-outline btn-info" type="submit" name="txt_Save" value="Save">
-                    <input id="txt_Update" class="btn btn-outline btn-info d-none" type="button" name="txt_Update" value="Update" (click)="update(f.value,id)">
+                    <a class="text-white float-right d-none" (click)="open(content2)" id="ShowModal"> <i class="ni ni-fat-add"></i> Add Users</a>
                   </div>
                 </div>
               </form>
@@ -74,7 +74,7 @@
 
                 <td class="text-right">
                   <div placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light" (click)="editData(arr._id);">
+                    <a class="btn btn-sm btn-icon-only text-light" (click)="editData(arr._id,content);">
                       <i class="fas fa-edit text-yellow fa-lg" aria-hidden="true" ></i>
 
                     </a>
@@ -92,3 +92,36 @@
     </div>
   </div>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header border-bottom">
+    <h4 class="modal-title" id="modal-basic-title">Add User</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form"  #f="ngForm"  (ngSubmit)="addspecialization(f.value)">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="input-group">
+              <input id="txt_Name1" class="form-control" placeholder="Enter Specialization Name"
+                      [(ngModel)]="value" value="{{data}}" name="txt_Name" required>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-users fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer border-top">
+    <input id="txt_Update" class="btn btn-outline btn-info" type="button" name="txt_Update"
+                      value="Update" (click)="update(f.value,id)">
+    <!-- (click)="modal.close('Save click')" -->
+  </div>
+</ng-template>

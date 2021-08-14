@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/components/api/api.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FormGroup } from '@angular/forms';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import $ from "jquery";
 @Component({
@@ -13,8 +14,10 @@ import $ from "jquery";
 export class SpecializationComponent implements OnInit {
   public specializationArray;
   public data;
+  public value;
   public id;
-  constructor(private apiservice: ApiService, public router: Router) { }
+  public editProfileForm: FormGroup;
+  constructor(private apiservice: ApiService, public router: Router,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getspecialization();
@@ -81,18 +84,25 @@ export class SpecializationComponent implements OnInit {
       Swal.fire("Info", "Please Try Again", "warning");
     }
   }
-  editData(_id){
-    $("#txt_Update").removeClass('d-none');
-    $("#txt_Save").addClass('d-none');
+  editData(_id,content){
+   
+    // $("#txt_Update").removeClass('d-none');
+    // $("#txt_Save").addClass('d-none');
+    
     var specializationData= this.specializationArray.find((s) => s._id === _id)
     this.data=specializationData.specialization;
+    this.value=specializationData.specialization;
     this.id=_id;
-    //console.log();
-    //$("#txt_Name").value=this.data;
+    debugger;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    //$("#txt_Name1").val(specializationData.specialization);
+    console.log(this);
+    $("#txt_Name1")[0].value=this.data;
   }
   update(value,id){
+    console.log(value,id)
     if(!!value){
-      this.apiservice.updateSpecialization(id,{isactive:value.txt_Name}).subscribe(
+      this.apiservice.updateSpecialization(id,{specialization:value.txt_Name}).subscribe(
         res=>{
           Swal.fire('Updated!','Your Specialization has been updated.','success').then(function(){
             location.reload();

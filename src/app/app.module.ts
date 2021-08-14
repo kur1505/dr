@@ -17,6 +17,9 @@ import { ComponentsModule } from './components/components.module';
 import { Cookie } from './components/cookies/cookie';
 import { ApiService } from './components/api/api.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -27,7 +30,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AppRoutingModule,
     AngularFontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    FlatpickrModule.forRoot(), 
   ],
   declarations: [
     AppComponent,

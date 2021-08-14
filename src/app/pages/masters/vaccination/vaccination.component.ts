@@ -14,7 +14,7 @@ export class VaccinationComponent implements OnInit {
   public vaccinationArray;
   public data;
   public id;
-  constructor(private apiservice: ApiService, public router: Router) { }
+  constructor(private apiservice: ApiService, public router: Router,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getvaccination();
@@ -81,18 +81,19 @@ export class VaccinationComponent implements OnInit {
       Swal.fire("Info", "Please Try Again", "warning");
     }
   }
-  editData(_id){
-    $("#txt_Update").removeClass('d-none');
-    $("#txt_Save").addClass('d-none');
+  editData(_id,content){
+    // $("#txt_Update").removeClass('d-none');
+    // $("#txt_Save").addClass('d-none');
     var vaccinationData= this.vaccinationArray.find((s) => s._id === _id)
     this.data=vaccinationData.vaccination;
     this.id=_id;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
     //console.log();
     //$("#txt_Name").value=this.data;
   }
   update(value,id){
     if(!!value){
-      this.apiservice.updateVaccination(id,{isactive:value.txt_Name}).subscribe(
+      this.apiservice.updateVaccination(id,{vaccination:value.txt_Name}).subscribe(
         res=>{
           Swal.fire('Updated!','Your Vaccination has been updated.','success').then(function(){
             location.reload();

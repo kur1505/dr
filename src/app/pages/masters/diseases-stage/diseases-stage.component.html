@@ -60,15 +60,15 @@
           <table class="table align-items-center table-dark table-flush">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Diseases Stage</th>
                 <th scope="col">Diseases</th>
+                <th scope="col">Diseases Stage</th>
                 <th scope="col">Status</th>
                 <th scope="col" class="text-right pr-5">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let arr of diseasesStageArray; let i = index">
-                <th scope="row">
+                <!-- <th scope="row">
                   <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                       <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
@@ -77,8 +77,9 @@
                       <span class="mb-0 text-sm">{{arr.diseaseStageName}}</span>
                     </div>
                   </div>
-                </th>
+                </th> -->
                 <td>{{arr.diseaseName}}</td>
+                <td>{{arr.diseaseStageName}}</td>
                 <td>
                   <span class="badge badge-dot mr-4" *ngIf="arr.isactive; else elseBlock" (click)="isActive(arr.id,arr.isactive)">
                     <i class="bg-success"></i>Active 

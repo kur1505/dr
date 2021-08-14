@@ -34,7 +34,7 @@
                 <div class="row pt-2 pb-2">
                   <div class="col-lg-4">
                       <label class="form-control-label" >Patient ID :</label>
-                      <label class="description pl-md-2" [(ngModel)]="patient._id">{{patient._id}}</label>
+                      <label class="description pl-md-2" [(ngModel)]="patient._id" name="patientId">{{patient._id}}</label>
                   </div>
                   <div class="col-lg-4">
                     <label class="form-control-label">Patient Name :</label>
@@ -64,13 +64,13 @@
                       <label class="form-control-label">Gender :</label>
                       <label class="description pl-md-2">{{patient.gender}}</label>
                   </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-4 d-none">
                         <label class="form-control-label">Pet Type :</label>
                         <label class="description pl-md-2">{{patient.pettype}}</label>
                       </div>
                       
                   
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 d-none">
                       <label class="form-control-label">Breed :</label>
                       <label class="description pl-md-2">{{patient.breed}}</label>
                       </div>
