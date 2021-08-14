@@ -1,10 +1,13 @@
 {
   "name": "argon-dashboard-angular",
   "version": "1.0.1",
+  "engines": {
+    "node": "14.17.3",
+    "npm": "7.20.1"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    
+    "start": "node serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
